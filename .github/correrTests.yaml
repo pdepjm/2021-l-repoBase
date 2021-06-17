@@ -1,0 +1,18 @@
+name: Correr tests
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: logtalk-actions/setup-swi-prolog@master
+      - name: Run tests
+        run: | 
+          if [ 0 == `find *.pl | wc -l` ] ; then
+            echo "No hay archivos Prolog en tu solución"
+            exit 1
+          fi
+          find *.pl | xargs -I{} swipl -s {} -g run_tests,halt -t 'halt(1)'
