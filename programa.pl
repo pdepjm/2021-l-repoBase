@@ -17,7 +17,7 @@ tieneA(diana, meowth).
 :- begin_tests(entrenador).
 
 test("Alguien que es entrenador", nondet):-
-    entrenador(diana).
+    entrenador(rasta).
 
 test("Alguien que no es entrenador", fail):-
     entrenador(rasta).
